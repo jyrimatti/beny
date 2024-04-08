@@ -1,0 +1,40 @@
+[[services]]
+type = "AccessoryInformation"
+
+[services.characteristics]
+Identify = {} # leave property completely out 'cos otherwise Homekit won't accept
+Manufacturer = "Jyri-Matti Lähteenmäki"
+Model = "BCP-AT1N-L"
+Name = "ZJ Beny"
+SerialNumber = "AA:AA:AA:AA:AA:14"
+FirmwareRevision = "100.1.1"
+
+
+[[services]]
+type = "Switch"
+
+[services.characteristics]
+Name = "Lataa"
+ConfiguredName = "Lataa"
+[services.characteristics.On]
+cmd = "cd beny; ./cmd/charge.sh"
+
+
+[[services]]
+type = "Switch"
+
+[services.characteristics]
+Name = "Hybrid mode"
+ConfiguredName = "Hybrid mode"
+[services.characteristics.On]
+cmd = "cd beny; ./cmd/mode_hybrid.sh"
+
+
+[[services]]
+type = "Switch"
+
+[services.characteristics]
+Name = "PV mode"
+ConfiguredName = "PV mode"
+[services.characteristics.On]
+cmd = "cd beny; ./cmd/mode_pv.sh"
