@@ -24,6 +24,16 @@ cmd = "cd beny; ./cmd/charge.sh"
 type = "Switch"
 
 [services.characteristics]
+Name = "Lataa yöllä"
+ConfiguredName = "Lataa yöllä"
+[services.characteristics.On]
+cmd = "cd beny; ./cmd/charge_next_night.sh"
+
+
+[[services]]
+type = "Switch"
+
+[services.characteristics]
 Name = "Hybrid mode"
 ConfiguredName = "Hybrid mode"
 [services.characteristics.On]
