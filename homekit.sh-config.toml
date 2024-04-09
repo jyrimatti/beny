@@ -11,6 +11,19 @@ FirmwareRevision = "100.1.1"
 
 
 [[services]]
+type = "TemperatureSensor"
+
+[services.characteristics]
+Name = "Latausteho"
+ConfiguredName = "Latausteho"
+[services.characteristics.CurrentTemperature]
+minValue = 0
+maxValue = 999
+minStep = 0.1
+cmd = "cd beny; ./cmd/charging_power.sh"
+
+
+[[services]]
 type = "Switch"
 
 [services.characteristics]

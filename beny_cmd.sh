@@ -5,4 +5,4 @@ cmd="$1"
 
 . ./beny_env.sh
 
-echo -n "$cmd" | xxd -r -p | nc -u -W1 "$BENY_HOST" "$BENY_PORT" | xxd -p
+echo -n "${BENY_PREFIX}$cmd" | xxd -r -p | nc -u -W1 "$BENY_HOST" "$BENY_PORT" | xxd -p

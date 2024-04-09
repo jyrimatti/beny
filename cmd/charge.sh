@@ -11,13 +11,13 @@ fi
 
 if [ "$getset" = "Set" ]; then
   if [ "$value" = "1" ]; then
-    response="$(dash ./beny_cmd.sh '353561613030303030633030303165323430303630313335')"
+    response="$(dash ./beny_cmd.sh "30633030303165323430303630313335")"
   else
-    response="$(dash ./beny_cmd.sh '353561613030303030633030303165323430303630303334')"
+    response="$(dash ./beny_cmd.sh "30633030303165323430303630303334")"
   fi
   echo "$value"
 else
-  ret="$(dash ./beny_cmd.sh '35356161303030303131303030316532343037363138303430383136323530373066' | head -c 22 | tail -c 1)"
+  ret="$(dash ./beny_cmd.sh "3131303030316532343037363138303430383136323530373066" | head -c 22 | tail -c 1)"
   if [ "$ret" = "0" ]; then
       echo 1
   else
