@@ -2,7 +2,7 @@
 #! nix-shell -i dash --pure -I channel:nixos-23.11-small -p dash coreutils xxd netcat nix
 
 getset="${1:-}"
-value=${4:-}
+value="${4:-}"
 if [ "$value" = "true" ] || [ "$value" = "1" ]; then
   value="1";
 else
@@ -11,9 +11,9 @@ fi
 
 if [ "$getset" = "Set" ]; then
   if [ "$value" = "1" ]; then
-    dash ./beny_cmd.sh '353561613030303030633030303165323430303630313335' >&2
+    response="$(dash ./beny_cmd.sh '353561613030303030633030303165323430303630313335')"
   else
-    dash ./beny_cmd.sh '353561613030303030633030303165323430303630303334' >&2
+    response="$(dash ./beny_cmd.sh '353561613030303030633030303165323430303630303334')"
   fi
   echo "$value"
 else
