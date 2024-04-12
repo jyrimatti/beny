@@ -27,6 +27,16 @@ cmd = "cd beny; ./cmd/charging_power.sh"
 type = "Switch"
 
 [services.characteristics]
+Name = "Plugged"
+ConfiguredName = "Plugged"
+[services.characteristics.On]
+cmd = "cd beny; ./cmd/plugged.sh"
+
+
+[[services]]
+type = "Switch"
+
+[services.characteristics]
 Name = "Lataa"
 ConfiguredName = "Lataa"
 [services.characteristics.On]

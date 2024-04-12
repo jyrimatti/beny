@@ -3,4 +3,4 @@
 
 . ./beny_env.sh
 
-dash ./beny_cmd.sh '3062303030316532343037303964' | tr -d '\n' | head -c 68 | tail -c 3 | convert
+dash ./beny_cmd.sh '3062303030316532343037303964' | tr -d '\n' | head -c 68 | tail -c 3 | convert | { read -r x; echo "$x / 10" | bc -l -S1; }

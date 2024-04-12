@@ -17,7 +17,7 @@ if [ "$getset" = "Set" ]; then
   fi
   echo "$value"
 else
-  ret="$(dash ./beny_cmd.sh "3062303030316532343037303964" | tr -d '\n' | head -c 80 | tail -c 1)"
+  ret="$(dash ./beny_cmd.sh "3062303030316532343037303964" | tr -d '\n' | head -c 84 | tail -c 1)"
   if [ "$ret" = "6" ]; then
       echo 1
   else
