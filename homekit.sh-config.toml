@@ -17,7 +17,7 @@ type = "TemperatureSensor"
 Name = "Latausteho"
 ConfiguredName = "Latausteho"
 [services.characteristics.CurrentTemperature]
-polling = 3
+polling = 5
 minValue = 0
 maxValue = 999
 minStep = 0.1
