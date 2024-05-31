@@ -71,3 +71,13 @@ Name = "Plugged"
 ConfiguredName = "Plugged"
 [services.characteristics.On]
 cmd = "cd beny; ./cmd/plugged.sh"
+
+
+[[services]]
+type = "Switch"
+
+[services.characteristics]
+Name = "Älylataus asetus"
+ConfiguredName = "Älylataus asetus"
+[services.characteristics.On]
+cmd = "cd beny; ./cmd/dynamic_charge.sh"
