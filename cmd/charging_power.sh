@@ -1,5 +1,5 @@
 #! /usr/bin/env nix-shell
-#! nix-shell -i dash --pure --keep LD_LIBRARY_PATH -I channel:nixos-23.11-small -p dash coreutils xxd netcat nix bc
+#! nix-shell -i dash --pure -I channel:nixos-23.11-small -p dash coreutils xxd netcat nix bc
 
 . ./beny_env.sh
 
