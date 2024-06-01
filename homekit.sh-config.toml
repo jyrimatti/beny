@@ -1,3 +1,7 @@
+bridge = "beny"
+port = 12314
+username = "AA:AA:AA:AA:AA:14"
+
 [[services]]
 type = "AccessoryInformation"
 
