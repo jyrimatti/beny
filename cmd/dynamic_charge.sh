@@ -17,10 +17,10 @@ powerDeficit="$(echo "$power > $stopLimit" | bc)"
 if [ "$getset" = "Set" ]; then
   if [ "$powerAvailable" = 1 ]; then
     if [ "$charging" = 0 ]; then
-      response="$(dash ./cmd/charge.sh Set 1)"
+      response="$(dash ./cmd/charge.sh Set '' '' 1)"
     fi
   elif [ "$charging" = 1 ] && [ "$powerDeficit" = 1 ]; then
-      response="$(dash ./cmd/charge.sh Set 0)"
+      response="$(dash ./cmd/charge.sh Set '' '' 0)"
   fi
 fi
 
