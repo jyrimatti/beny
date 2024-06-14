@@ -1,7 +1,7 @@
 #!/bin/sh
 
-export BENY_HOST="$(cat .beny-host)"
-export BENY_PORT="$(cat .beny-port)"
+export BENY_HOST="$(cat "${CREDENTIALS_DIRECTORY:-.}/.beny-host")"
+export BENY_PORT="$(cat "${CREDENTIALS_DIRECTORY:-.}/.beny-port")"
 
 export BENY_PREFIX="3535616130303030"
 

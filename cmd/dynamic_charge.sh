@@ -1,5 +1,5 @@
 #! /usr/bin/env nix-shell
-#! nix-shell --pure -i dash -I channel:nixos-23.11-small -p dash coreutils xxd netcat nix bc jq flock curl cacert
+#! nix-shell --pure --keep CREDENTIALS_DIRECTORY -i dash -I channel:nixos-23.11-small -p dash coreutils xxd netcat nix bc jq flock curl cacert
 set -eu
 
 getset="${1:-}"
