@@ -16,15 +16,19 @@ if [ "$getset" = "Set" ]; then
   previousQuarterDrewPower="$(echo "$previousQuarter > 0" | bc)"
   if [ "$charging" = 0 ]; then
     if [ "$powerAvailable" = 1 ] && [ "$previousQuarterDrewPower" = 0 ]; then
-      curl "$(cat .beny-notifyurl-start)"
+      ignore="$(curl "$(cat .beny-notifyurl-start)")"
       response="$(dash ./cmd/charge.sh Set '' '' 1)"
+      echo 1
+      exit 0
     fi
   else
     mode_pv="$(cd ../beny && dash ./cmd/mode_pv.sh Get)"
     if [ "$previousQuarterDrewPower" = 1 ] && [ "$mode_pv" = 1 ]; then
       # there was net power being drawn from the grid, and mode is PV -> stop charging
-      curl "$(cat .beny-notifyurl-stop)"
+      ignore="$(curl "$(cat .beny-notifyurl-stop)")"
       response="$(dash ./cmd/charge.sh Set '' '' 0)"
+      echo 0
+      exit 0
     fi
   fi
 fi
