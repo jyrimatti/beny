@@ -5,22 +5,27 @@ set -eu
 getset="${1:-}"
 
 powerLimit=-4000
-stopLimit=1000
 
 power="$(cd ../homewizard && dash ./cmd/data.sh active_power_w)"
-charging="$(cd ../beny && dash ./cmd/charge.sh Get)"
 
 powerAvailable="$(echo "$power < $powerLimit" | bc)"
-powerDeficit="$(echo "$power > $stopLimit" | bc)"
-
 
 if [ "$getset" = "Set" ]; then
-  if [ "$powerAvailable" = 1 ]; then
-    if [ "$charging" = 0 ]; then
+  charging="$(cd ../beny && dash ./cmd/charge.sh Get)"
+  previousQuarter="$(cd ../homewizard && dash ./cmd/previous_quarterly_yield.sh Get)"
+  previousQuarterDrewPower="$(echo "$previousQuarter > 0" | bc)"
+  if [ "$charging" = 0 ]; then
+    if [ "$powerAvailable" = 1 ] && [ "$previousQuarterDrewPower" = 0 ]; then
+      curl "$(cat .beny-notifyurl-start)"
       response="$(dash ./cmd/charge.sh Set '' '' 1)"
     fi
-  elif [ "$charging" = 1 ] && [ "$powerDeficit" = 1 ]; then
+  else
+    mode_pv="$(cd ../beny && dash ./cmd/mode_pv.sh Get)"
+    if [ "$previousQuarterDrewPower" = 1 ] && [ "$mode_pv" = 1 ]; then
+      # there was net power being drawn from the grid, and mode is PV -> stop charging
+      curl "$(cat .beny-notifyurl-stop)"
       response="$(dash ./cmd/charge.sh Set '' '' 0)"
+    fi
   fi
 fi
 
