@@ -12,7 +12,7 @@ powerAvailable="$(echo "$power < $powerLimit" | bc)"
 
 if [ "$getset" = "Set" ]; then
   charging="$(cd ../beny && dash ./cmd/charge.sh Get)"
-  previousQuarter="$(cd ../homewizard && dash ./cmd/previous_quarterly_yield.sh Get)"
+  previousQuarter="$(cd ../homewizard && dash ./cmd/previous_quarterly_yield.sh ./homewizard.db)"
   previousQuarterDrewPower="$(echo "$previousQuarter > 0" | bc)"
   if [ "$charging" = 0 ]; then
     if [ "$powerAvailable" = 1 ] && [ "$previousQuarterDrewPower" = 0 ]; then
