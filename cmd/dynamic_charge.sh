@@ -12,10 +12,11 @@ powerAvailable="$(echo "$power < $powerLimit" | bc)"
 
 if [ "$getset" = "Set" ]; then
   charging="$(cd ../beny && dash ./cmd/charge.sh Get)"
+  plugged="$(cd ../beny && dash ./cmd/plugged.sh Get)"
   previousQuarter="$(cd ../homewizard && dash ./cmd/previous_quarterly_yield.sh ./homewizard.db)"
   previousQuarterDrewPower="$(echo "$previousQuarter > 0" | bc)"
   if [ "$charging" = 0 ]; then
-    if [ "$powerAvailable" = 1 ] && [ "$previousQuarterDrewPower" = 0 ]; then
+    if [ "$plugged" = 1 ] && [ "$powerAvailable" = 1 ] && [ "$previousQuarterDrewPower" = 0 ]; then
       ignore="$(curl "$(cat .beny-notifyurl-start)")"
       response="$(dash ./cmd/charge.sh Set '' '' 1)"
       echo 1
