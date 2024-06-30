@@ -4,7 +4,6 @@ set -eu
 
 getset="${1:-}"
 service="${2:-}"
-characteristic="${3:-}"
 
 powerLimit=-4000
 

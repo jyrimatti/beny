@@ -107,3 +107,17 @@ ConfiguredName = "Auton lataus"
 [services.characteristics.MotionDetected]
 iid = 101
 value = false
+
+
+[[services]]
+type = "Door"
+
+[services.characteristics]
+Name = "Auton lataus"
+ConfiguredName = "Auton lataus"
+CurrentPosition = 0
+TargetPosition = 0
+PositionState = 2
+[services.characteristics.ObstructionDetected]
+iid = 102
+value = false
