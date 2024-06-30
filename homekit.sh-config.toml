@@ -93,4 +93,4 @@ type = "ContactSensor"
 [services.characteristics]
 Name = "Auton lataus"
 ConfiguredName = "Auton lataus"
-ContactSensorState = 1
+ContactSensorState = 0
