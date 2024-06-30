@@ -93,4 +93,17 @@ type = "ContactSensor"
 [services.characteristics]
 Name = "Auton lataus"
 ConfiguredName = "Auton lataus"
-ContactSensorState = 0
+[services.characteristics.ContactSensorState]
+iid = 100
+value = 0
+
+
+[[services]]
+type = "MotionSensor"
+
+[services.characteristics]
+Name = "Auton lataus"
+ConfiguredName = "Auton lataus"
+[services.characteristics.MotionDetected]
+iid = 101
+value = false
