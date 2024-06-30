@@ -85,3 +85,12 @@ Name = "Älylataus asetus"
 ConfiguredName = "Älylataus asetus"
 [services.characteristics.On]
 cmd = "cd beny; ./cmd/dynamic_charge.sh"
+
+
+[[services]]
+type = "ContactSensor"
+
+[services.characteristics]
+Name = "Auton lataus"
+ConfiguredName = "Auton lataus"
+ContactSensorState = 1
