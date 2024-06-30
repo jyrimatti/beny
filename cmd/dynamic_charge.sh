@@ -18,7 +18,7 @@ if [ "$getset" = "Set" ]; then
   previousQuarterDrewPower="$(echo "$previousQuarter > 0" | bc)"
   if [ "$charging" = 0 ]; then
     if [ "$plugged" = 1 ] && [ "$powerAvailable" = 1 ] && [ "$previousQuarterDrewPower" = 0 ]; then
-      dash ./notify.sh "$(echo "$service" | jq -r '.aid')" 101 1
+      dash ./notify.sh "$(echo "$service" | jq -r '.aid')" 101 true
       response="$(dash ./cmd/charge.sh Set '' '' 1)"
       echo 1
       exit 0
@@ -27,7 +27,7 @@ if [ "$getset" = "Set" ]; then
     mode_pv="$(cd ../beny && dash ./cmd/mode_pv.sh Get)"
     if [ "$previousQuarterDrewPower" = 1 ] && [ "$mode_pv" = 1 ]; then
       # there was net power being drawn from the grid, and mode is PV -> stop charging
-      dash ./notify.sh "$(echo "$service" | jq -r '.aid')" 101 0
+      dash ./notify.sh "$(echo "$service" | jq -r '.aid')" 101 false
       response="$(dash ./cmd/charge.sh Set '' '' 0)"
       echo 0
       exit 0
