@@ -12,5 +12,5 @@ find "$HOMEKIT_SH_RUNTIME_DIR/sessions" -path '*/subscriptions/*' -name "$aid.$i
   | sed 's/subscriptions/events/'\
   | {
       read -r output
-      echo "$event" > "$output.push.json"
+      echo -n "$event" > "$output.push.json"
   }
