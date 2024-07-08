@@ -5,14 +5,14 @@ set -eu
 getset="${1:-}"
 service="${2:-}"
 
-powerLimit=-4000
+powerLimit=-3500
 
 if [ "$getset" = "Set" ]; then
-  previousQuarter="$(cd ../homewizard && dash ./cmd/previous_quarterly_yield.sh ./homewizard.db)"
-  previousQuarterDrewPower="$(echo "$previousQuarter > 1000" | bc)"
+  currentQuarter="$(cd ../homewizard && dash ./cmd/current_quarterly_yield.sh ./homewizard.db)"
+  currentQuarterDrewPower="$(echo "$currentQuarter > 1000" | bc)"
   
   if [ "$(dash ./cmd/charge.sh Get)" = 0 ]; then
-    if [ "$previousQuarterDrewPower" = 0 ]; then
+    if [ "$currentQuarterDrewPower" = 0 ]; then
       if [ "$(dash ./cmd/plugged.sh Get)" = 1 ]; then
         power="$(cd ../homewizard && dash ./cmd/data.sh active_power_w)"
         powerAvailable="$(echo "$power < $powerLimit" | bc)"
@@ -25,7 +25,7 @@ if [ "$getset" = "Set" ]; then
       fi
     fi
   else
-    if [ "$previousQuarterDrewPower" = 1 ]; then
+    if [ "$currentQuarterDrewPower" = 1 ]; then
       if [ "$(dash ./cmd/mode_pv.sh Get)" = 1 ]; then
         # there was net power being drawn from the grid, and mode is PV -> stop charging
         dash ./notify.sh "$(echo "$service" | jq -r '.aid')" 101 false
