@@ -6,7 +6,7 @@ export BENY_PORT="$(cat "${CREDENTIALS_DIRECTORY:-.}/.beny-port")"
 export BENY_PREFIX="3535616130303030"
 
 convert() {
-  while read -r x; do
+  while read -r x || [ -n "$x" ]; do
     a16="$x / 100"
     a10="$x % 100 / 10 / 3 - 1"
     a1="$x % 10"
