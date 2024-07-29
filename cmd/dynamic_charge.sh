@@ -18,6 +18,7 @@ if [ "$getset" = "Set" ]; then
         powerAvailable="$(echo "$power < $powerLimit" | bc)"
         if [ "$powerAvailable" = 1 ]; then
           response="$(dash ./cmd/charge.sh Set '' '' 1)"
+          dash ./notify_push.sh .beny-notifyurl-start
           echo 1
           exit 0
         fi
@@ -28,6 +29,7 @@ if [ "$getset" = "Set" ]; then
       if [ "$(dash ./cmd/mode_pv.sh Get)" = 1 ]; then
         # there was net power being drawn from the grid, and mode is PV -> stop charging
         response="$(dash ./cmd/charge.sh Set '' '' 0)"
+        dash ./notify_push.sh .beny-notifyurl-stop
         echo 0
         exit 0
       fi
