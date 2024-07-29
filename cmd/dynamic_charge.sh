@@ -17,7 +17,6 @@ if [ "$getset" = "Set" ]; then
         power="$(cd ../homewizard && dash ./cmd/data.sh active_power_w)"
         powerAvailable="$(echo "$power < $powerLimit" | bc)"
         if [ "$powerAvailable" = 1 ]; then
-          dash ./notify.sh "$(echo "$service" | jq -r '.aid')" 101 true
           response="$(dash ./cmd/charge.sh Set '' '' 1)"
           echo 1
           exit 0
@@ -28,7 +27,6 @@ if [ "$getset" = "Set" ]; then
     if [ "$currentQuarterDrewPower" = 1 ]; then
       if [ "$(dash ./cmd/mode_pv.sh Get)" = 1 ]; then
         # there was net power being drawn from the grid, and mode is PV -> stop charging
-        dash ./notify.sh "$(echo "$service" | jq -r '.aid')" 101 false
         response="$(dash ./cmd/charge.sh Set '' '' 0)"
         echo 0
         exit 0
