@@ -9,7 +9,7 @@ powerLimit=-3500
 
 if [ "$getset" = "Set" ]; then
   currentQuarter="$(cd ../homewizard && dash ./cmd/current_quarterly_yield.sh ./homewizard.db)"
-  currentQuarterDrewPower="$(echo "$currentQuarter > 1000" | bc)"
+  currentQuarterDrewPower="$(echo "$currentQuarter > 0.250" | bc)"
   
   if [ "$(dash ./cmd/charge.sh Get)" = 0 ]; then
     if [ "$currentQuarterDrewPower" = 0 ]; then
