@@ -1,5 +1,5 @@
 #! /usr/bin/env nix-shell
-#! nix-shell --pure --keep CREDENTIALS_DIRECTORY --keep HOMEKIT_SH_RUNTIME_DIR -i dash -I channel:nixos-23.11-small -p dash coreutils findutils gnused jq
+#! nix-shell --pure --keep CREDENTIALS_DIRECTORY --keep HOMEKIT_SH_RUNTIME_DIR -i dash -I channel:nixos-24.11-small -p dash coreutils findutils gnused jq
 set -eu
 
 aid="$1"
