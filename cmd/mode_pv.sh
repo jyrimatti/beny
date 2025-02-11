@@ -1,5 +1,6 @@
 #! /usr/bin/env nix-shell
-#! nix-shell -i dash --pure --keep CREDENTIALS_DIRECTORY -I channel:nixos-24.11-small -p dash coreutils xxd netcat nix flock
+#! nix-shell --pure --keep CREDENTIALS_DIRECTORY
+#! nix-shell -i dash -I channel:nixos-24.11-small -p dash coreutils xxd netcat nix flock
 set -eu
 
 getset="${1:-}"
